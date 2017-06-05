@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	良仓
+	</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/liangcang.css">
+</head>
+<script type="text/javascript">
+    if(typeof(Storage)!=="undefined")
+{  
+    // console.log(localStorage.getItem("currentName"));
+    // 是的! 支持 localStorage  sessionStorage 对象!
+    // 一些代码.....
+} else {
+    // 抱歉! 不支持 web 存储。
+}
+</script>
+<script>
+window.easemobim = window.easemobim || {};
+easemobim.config = {
+    //请使用自己的租户ID
+    tenantId: '41977'     
+};
+</script>
+<script src='//kefu.easemob.com/webim/easemob.js?tenantId=41977&hide=false&sat=false' async='async'></script>
+<body>
+    <div class="fixed">
+    	<div class="header">
+    		<div class="h-core">
+    			<a href="liangcang.html"><div class="logo"></div></a>
+    			<ul class="header-right">
+    				<li class="fontcolor">
+    					<a href="login.html">登录</a><a href="zhuce.html">注册</a>
+    				</li>
+                    <li class="loginsucess">
+                        <a href="http://www.iliangcang.com/i/usermain/"><img src=""><span >用户名</span></a>
+                        <div>
+                            <a href="http://www.iliangcang.com/i/userinfo/"><span>个人设置</span></a>
+                            <a href="http://www.iliangcang.com/i/useraddress/"><span>收货信息</span></a>
+                            <a href="http://www.iliangcang.com/i/myorder/pay/" style="border: none;"><span>我的订单</span></a>
+                            <a href="#" style="border: none;background: #242930;text-align: center;color: #fff;font-size: 14px;"><span id="logout">退出</span></a>
+                        </div>
+                    </li>
+    				<li class="line"></li>
+    				<li class="shopcar">
+    					<a href="">购物车</a>
+    					<ul class="shop">
+                            
+
+    					</ul>
+    					<div class="addshop">
+    						<a href="">快去抢购良仓商品吧  </a>
+    					</div>
+    				</li>
+    				<li class="line"></li>
+    				<li class="message">
+    					<a href="">消息</a>
+    					<ul class="">
+    						<li>动态  <span>0</span></li>
+    						<li>评论  <span>0</span></li>
+    						<li>私信  <span>0</span></li>
+    						<li>粉丝  <span>0</span></li>
+    						<li>喜欢  <span>0</span></li>
+    						<li>通知  <span>0</span></li>
+    					</ul>
+    				</li>
+    				<li class="line"></li>
+    				<li class="addgoods">
+    					<a href="">添加良品</a>
+    				</li>
+    			</ul>
+    		</div>
+    	</div>
+    	<div class="title">
+    		<ul>
+    			<li>
+    				<a href="" style="text-align: left;padding-left: 15px;">首页</a>
+    			</li>
+    			<li>
+    				<a href="">商店</a>
+    			</li>
+    				<li>
+    				<a href="">杂志</a>
+    			</li>
+    				<li>
+    				<a href="">分享</a>
+    			</li>
+    				<li>
+    				<a href="">达人</a>
+    			</li>
+    		</ul>
+    		<div class="title-right">
+    			<span></span><div id="search"><input type="" name="" placeholder="search..." ></div>
+    		</div>
+    	</div>
+    </div>
+    <div class="bao">   
+	<div class="imgbox">
+        <ul class="banner"> 
+            <li ><a href=""><img src="img/1010.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/1009.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/1008.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/1001.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/1006.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/1005.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/972.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/982.jpg" alt=""></a></li>
+            <li ><a href=""><img src="img/1010.jpg" alt=""></a></li>
+        </ul>
+        <span id="sp1"></span><span id="sp2"></span>
+        <ul class="banner-bottom">
+            <li style="background: #45494d"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="picture">
+        <div class="first-col">
+            <a href="http://www.iliangcang.com/i/topicapp/201705181808"><img src="http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/27/27176.jpg" class="first"></a>
+             <a href="http://www.iliangcang.com/i/topicapp/201705185537"><img src="http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/27/27175.jpg" class="fourth"></a>
+        </div>
+        <div class="second-col">
+            <a href="http://www.iliangcang.com/i/topicapp/201705115213"><img src="http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/27/27178.jpg" class="second"></a>
+        </div>
+        <div class="third-col">
+            <a href="http://www.iliangcang.com/i/topicapp/201705185227"><img src="http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/27/27177.jpg" class="third"></a>
+            <a href="http://www.iliangcang.com/i/topic/201705183611"><img src="http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/27/27174.jpg" class="fifth"></a>
+        </div>   
+    </div>
+    <div class="prettygoods">
+       <div class="renqi">人气良品</div>
+    </div>
+    <a href="http://www.iliangcang.com/i/shop/" class="more"></a>
+    </div>
+    <!-- our shop -->
+    <div class="ourshop">
+        <a href="http://www.iliangcang.com/i/shop/"><p></p></a>
+        <ul>
+            <li class="first">
+                <div class="left first-left"></div><div class="right width" ><p class="p1">全球精品</p><p class="p2">Global Selections</p></div>
+            </li>
+            <li class="second">
+                <div class="left second-left"></div><div class="right width"><p class="p1">正品保障</p><p class="p2">Authenticity Guaranteed</p></div>
+            </li>
+            <li class="third">
+                <div class="left third-left"></div><div class="right width"><p class="p1">全场包邮</p><p class="p2">Free Delivery</p></div>
+            </li>
+            <li class="fourth">
+                <div class="left fourth-left"></div><div class="right width"><p class="p1"></p><p class="p2">工作日 09:00-18:00</p></div>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <div class="bottom-core">
+            <div class="bottom-core-left">
+                <a href="http://www.iliangcang.com/i/our/appdown" target="_blank">
+                    <div class="download">
+                        <p class="p1">iPhone Android</p>
+                        <p class="p2">客户端下载</p>
+                        <div class="download-icon">
+                            <div class="iphone">
+                               <s></s>
+                               <span>下载iPhone版</span>
+                            </div>
+                            <div class="android">
+                                <s></s>
+                               <span>下载Android版</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="friend">
+                    <div class="link">
+                        <a href="/i/our/" target="_blank" class="first">关于良仓</a><a href="/i/our/service/" target="_blank">服务协议</a><a href="/i/our/law/" target="_blank">隐私保护政策</a><a href="/i/our/help/" target="_blank">使用指南</a><a href="/i/our/contact/" target="_blank">联系我们</a><a href="http://www.lagou.com/gongsi/2236.html" target="_blank">加入我们</a><a href="/i/our/flinks/" target="_blank">友情链接</a><a href="javascript:;">私信良仓</a>
+
+                    </div>
+                          <p>© 2013-2015 北京良仓文化传播有限公司版权所有 京ICP备13010677号-1 京公网安备11010502025627</p>
+                        <p>&nbsp; &nbsp;公司名称：北京良仓文化传播有限公司  电话：010-58263516</p>
+                        <p>&nbsp;&nbsp; 公司地址：北京朝阳区百子湾路32号6号楼1层60号.</p>
+                        <p>&nbsp;&nbsp; 社会信用统一代码：91110105059231575L  食品许可证：JY11105160159557</p>
+                        <P>&nbsp;&nbsp;  图书证名称：中华人民共和国出版物经营许可证  图书证编号：新出发京零 字第 朝 150051 号  </P>
+                </div>
+            </div>
+            <ul class="bottom-core-right">
+                <li class="douban">
+                    <a href="http://site.douban.com/208766/" target="_blank"></a>
+                </li>
+                <li class="sina">
+                    <a href="http://weibo.com/iliangcang" target="_blank"></a>
+                </li>
+                <li class="weixin">
+                    <a href="javascript:void(0)">
+                        <div>
+                            <span></span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+   <!-- totop -->
+    <a href="#"><div class="totop"></div></a>
+
+   <!--      --></body>
+    <script src="js/jquery.js" charset="utf-8"></script>
+    <script type="text/templete" id="templete">
+        <%  var name =goods_name.split(" ");  %>
+        <div class="box" id="box" >
+            <!-- "http://www.iliangcang.com//i/goods/?id=<%= goods_id%>" -->
+            <a  class="first" href="http://localhost/liangcang.html?id=<%= goods_id%>"> <s style="background: url('<%= goods_thumb %>') no-repeat center; display:block;height: 316px;width: 316px;"></s>
+              <div class ="second"; href="http://www.iliangcang.com//i/goods/?id=<%= goods_id%>" >
+                <p class="p1"><%= price %></p>
+                <p class="p2" style="margin-top: 80px;"><%= name[1] %></p>
+                <p class="p3" style="margin-top: 5px;"><%= goods_desc %></p>
+              </div>
+            </a>
+            <div class="dleft">
+                <span class="sp1"><%= name[0] %></span>
+            </div>
+            <div class="dright">
+                 <span class="sp2"><%= star_number %></span>
+            </div>        
+        </div>
+    </script>
+    <script type="text/templete" id="goodsDesprition">
+       <div style="width: 1000px; margin: 0 auto;padding-top: 150px;height: 1000px; position: relative;">
+            <div id="bigPic" style="display: none; background: url(http://imgs-qn.iliangcang.com/ware/upload/orig/2/381/381841.jpg) no-repeat center; position: absolute;width: 300px;height: 300px;left: 350px;top:200px;z-index: 666" ></div>
+            <div class="add-left">
+                <div class="goods">
+                    <div class="goodsleft" style="float: left;">
+                        <div style="color:rgb(191, 191, 191);font-size: 13px;">
+                            <a href="/i/home/" style="color:#bfbfbf" > 良仓 </a> 
+                            <a href="/i/class/?id=5" style="color:#bfbfbf"> 玩具 </a> 
+                                    经典车纸模型 | Play!系列 捷豹E-Tipe型号
+                        </div>
+                        <ul style="width: 350px;overflow: hidden;height: 350px;" id="goodsbanner">
+                            <li id="smallPic" style="width:350px;height:350px;background:url('http://imgs-qn.iliangcang.com/ware/upload/orig/2/381/381841.jpg') no-repeat center;background-size:contain;float: left;position: relative;">    <div id="fdj" style="width: 30px;height: 30px;background: gray;position: absolute;opacity: 0.4;display: none;"></div>
+                            </li>
+                            <li style="float: left; width:350px;height:350px;background:url('http://imgs-qn.iliangcang.com/ware/upload/orig/2/381/381842.jpg') no-repeat center;background-size:contain;">  
+                            </li>
+                        </ul>
+                    </div>
+                   
+                    <div class="goodsright" style="float: left;margin-left: 40px;">
+                      <div class="goName" style="margin-top: 10px;font-size: 24px;height: auto;line-height: 36px;vertical-align: middle;padding: 0px 0px;color: #333;">
+                          <a href="" style="color: #878787;margin-top: 20px;display: block;">Studio ROOF</a>
+                        </div>
+                        <div class="goName" style="font-size: 24px;height: auto;line-height: 36px;vertical-align: middle;padding: 0px 0px;color: #333;">
+                           经典车纸模型 | Play!系列 捷豹E-Tipe型号 
+                        </div>
+                        <div style="font-size:12px;line-height:18px;color:rgb(153,153,153); padding-top: 5px;padding-bottom: 32px">
+                          
+                           价格:    <span style="color:rgb(16,131,255);font-size: 18px">¥80.00元</span>
+                        </div>
+                        <div style="font-size: 12px;width:300px;padding-left: 44px;">
+                          <span style="background:url(http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/24/24690.png) no-repeat left center;margin-left: 0px;background-size: 14px 14px;padding-left: 17px;color:rgb(153,153,153)">免运费</span>
+                          <span style="background: url(http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/24/24689.png) no-repeat left center;background-size: 12px 14px;padding-left: 17px;color:rgb(153,153,153)">正品授权</span>
+                        </div>
+                        <div style="font-size: 12px;color:rgb(153,153,153);min-height: 50px;height: auto;margin-top: 10px">数量
+                          <div style="    width: 100px; font-size: 0px;  display: inline-block;">
+                          <a href="" style="border: 1px solid black;padding: 2px 10px;height: 20px;display: inline-block;line-height: 20px;vertical-align: middle;color: #999;font-size: 13px;text-align: center;background: #dcdcdc;margin-left: 10px;">一个</a>
+                          </div>
+                        <div style="font-size: 12px;color:rgb(153,153,153);min-height: 50px;height: auto;margin-top: 10px">
+                                数量
+                          <div style="display: inline-block;">
+                            <b style="margin-left: 10px; width: 13px;height: 13px;background: url(http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/24/24748.png) no-repeat center;display: inline-block;background-size: contain;"></b><input type="" name="" style="margin: 0px 7px;width: 52px;height: 24px;display: inline-block;line-height: 24px;vertical-align: middle;color: #666;font-size: 13px;background: white;text-align: center;border: 1px solid rgb(238,238,238);" value="1"><b style="width: 13px;height: 13px;background: url(http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/24/24750.png) no-repeat center;display: inline-block;background-size: contain;"></b>
+                          </div>
+                          </div>
+                          <div>
+                              <a href="" style="background: black;width: 330px;height: 42px;line-height: 42px;display: block;text-align: center;border: none;color: #fff;font-size: 18px;">立即购买</a>
+                          </div>
+                          <div>
+                              <b id="addgoodstocar" style="display: inline-block;width: 100px;height: 32px;border: none;color: black;line-height: 32px;font-size: 13px;border: 1px solid black;background-color: #fff;background: url(http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/24/24749.png) #fff no-repeat;float: left;background-size: 15px;background-position: 38px 8px;padding-left: 60px;margin-top: 10px;">加入购物车</b>
+                              <a href="" style="display: inline-block;width: 90px;height: 32px;border: none;color: black;line-height: 32px;font-size: 13px;border: 1px solid black;background-color: #fff;background: url(http://7qn7hi.com1.z0.glb.clouddn.com/ware/orig/2/24/24746.png) #fff no-repeat;float: left;background-size: 12px;background-position: 55px 7px;padding-left: 70px;margin-left: 7px;margin-top: 10px;">分享</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-right">
+                
+            </div>
+        </div>
+    </script>
+    <script type="text/javascript">
+    /*======================================放大镜======================================*/
+    function fdj(){
+    $("#smallPic").mousemove(function(e){
+        var e = event||arguments[0];
+        $("#bigPic").css({display:"block"});
+        $("#fdj").css({display:"block"});
+        $(this).css("cursor","Pointer");
+
+        var mleft = $("#smallPic").offset().left;
+        var mtop = $("#smallPic").offset().top; 
+        var bei = 800/350;
+        if (e.pageX - mleft<$("#fdj").outerWidth()/2) {
+            x=0;
+        }else if(e.pageX - mleft>350-$("#fdj").outerWidth()/2){
+            x = 320;
+        }else{
+            var x = e.pageX - mleft - $("#fdj").outerWidth()/2;
+        }
+        if (e.pageY - mtop<$("#fdj").outerHeight()/2) {
+            y=0;
+        }else if(e.pageY - mtop>350-$("#fdj").outerHeight()/2){
+            y = 320;
+        }else{
+            var y = e.pageY - mtop - $("#fdj").outerHeight()/2;
+        }
+        $("#fdj").css({left:x+"px",top:y+"px"});
+        var x = -(e.pageX - mleft)*bei+175+"px ";
+        var y = -(e.pageY - mtop)*bei+175+"px";
+        $("#bigPic").css({backgroundPosition:x+y})
+    });
+    $("#smallPic").mouseleave(function(e){
+        $("#bigPic").css({display:"none"});
+        $("#fdj").css({display:"none"});
+    })
+}
+/*====================================添加到购物车===================================*/
+    function addgoodstocar(){
+        $("#addgoodstocar").click(function(){
+            var name = localStorage.currentName;
+            var data = [];
+            if (null !== localStorage.getItem(name)) {
+                data = JSON.parse(localStorage.getItem(name)).data;
+            }
+            var goods = new Object();
+            goods.id=1;
+            goods.num = 1;
+            goods.des = "第一个商品的描述"
+            data.push(goods);
+            var person = {"name":name,"data":data};
+            localStorage.setItem(person.name,JSON.stringify(person));
+            console.log(localStorage.getItem(name));
+            var arr = JSON.parse(localStorage.getItem(name)).data;
+            var shophtml = '';
+            $.each(arr,function(i,val){
+                shophtml+='<li style="height: 20px;width: 80%; background:#fff;margin-left: 30px;text-align: center;margin-bottom:10px;">'+val.des+'</li>';
+            })
+            // localStorage.clear();
+            $(".header-right .shopcar .shop").html(shophtml);
+        });
+    }
+    /*================================进入界面时购物车的初始化=================================================*/
+    var name = localStorage.currentName; 
+    // console.log(localStorage.getItem("gongjie"));
+    var arr = JSON.parse(localStorage.getItem(name)).data;
+    var shophtml = '';
+    $.each(arr,function(i,val){
+        shophtml+='<li style="height: 20px;width: 80%; background:#fff;margin-left: 30px;text-align: center;margin-bottom:10px;">'+val.des+'</li>';
+    })
+    // localStorage.clear();
+    $(".header-right .shopcar .shop").html(shophtml);
+
+
+    </script>
+    <script type="text/javascript" src="js/jquery.css.js"></script>
+  <script charset="utf-8" src="js/underscore.js"></script>
+ <script type="text/javascript">
+     var colarr = [80,80,80];
+    var width = 340;
+    var page = 1;
+    var pre_page = 18;  
+    var flag = true;
+    var templeteStr = $("#templete").html();
+    // console.log( templeteStr);
+    var tempStr = _.template(templeteStr);
+    function getPage(page,pre_page){
+        $.ajax({
+            url:"http://lc.shudong.wang/api_goods.php",
+            data:{page:page,pagesize:pre_page},
+            success:function(data){
+                // console.log(data);
+                flag = false;
+                var data = JSON.parse(data);
+                var obj = data.data;
+                $.each(obj,function(index,value){
+                    var heroStr = tempStr(value);
+                    var   objdom = $(heroStr);  
+                    $(".prettygoods").append(objdom);
+                    var minvalue = _.min(colarr);
+                    var minIndex = _.indexOf(colarr,minvalue);
+                    colarr[minIndex] +=$(objdom).outerHeight()+30;
+                    objdom.css({"left":minIndex*width , "top" :minvalue});   
+                })
+            }
+        })
+    }
+
+    getPage(1,18)
+/*====================================totop==============================================================*/
+  $(".totop").mouseenter(function(){
+      // if($(".totop").is(":animated")){
+      //           return;
+      //       }
+     $(".totop").animate({opacity:"0.5"},"fast");
+  });
+  $(".totop").mouseleave(function(){
+     $(".totop").animate({opacity:"1"},"fast");
+  });
+ /*=================================================获取跳转界面传递的数据===========================================*/
+    var thisURL = document.URL; 
+    console.log(thisURL);
+    if ("undefined" != typeof thisURL) {
+        if ("undefined" == typeof thisURL.split("?")[1]) {
+           
+        }else{
+            $(".imgbox").remove();
+            $(".picture").remove();
+            $(".prettygoods").remove();  
+            $(".more").remove();  
+           // console.log($("#goodsDesprition").html())
+             $(".bao").append($("#goodsDesprition").html());
+             fdj();
+             addgoodstocar();
+        }
+  }
+  $("#logout").click(function(){
+     console.log("aaaaa");
+     localStorage.removeItem("currentName");
+     location.reload();
+  });
+   if (null !== localStorage.getItem("currentName")) {
+                $('.fontcolor').css({display:"none"});
+                $(".loginsucess").css({display:"block"});
+                $(".loginsucess>a>span").html(localStorage.getItem("currentName"));
+            }else{}
+ /*============================================title 里的搜素=========================================================*/ 
+ 	var istrue = true;
+ 	$(".title-right span").click(function(){
+ 		if (istrue) {
+ 			$("#search").animate({width:"260px",left:"0px"},"fast",function(){
+ 				istrue = false;
+	 		})
+	 		$("#search input").animate({width:"260px",left:"0px"},"fast",function(){
+	 			istrue = false;
+	 			$("#search input").focus();
+	 		})
+ 		}else{
+ 			$("#search").animate({width:"0px",left:"240px"},"fast",function(){
+ 				istrue = true;
+	 		})
+	 		$("#search input").animate({width:"0px",left:"240px"},"fast",function(){
+	 			istrue = true;
+	 		})
+ 		}
+ 	});
+    /*=====================================顶部界面的fix================================================*/ 
+    $(window).scroll(function(event) {
+        if($(window).scrollTop()>100){
+            $(".totop").show();
+            if($(".header").is(":animated")){
+                return;
+            }
+            $(".header").slideUp("fast");
+        }
+        if ($(window).scrollTop()<100) {
+            $(".totop").hide();
+            if($(".header").is(":animated")){
+                return;
+            }
+            $(".header").slideDown("fast");
+        }
+     })
+    /*=======================================下面的小手动画=====================================================*/ 
+    $(".ourshop a").mouseenter(function(){
+        $(".ourshop a p").animate({left:"-20px"},"fast").animate({left:"0px"},"fast").animate({left:"-20px"},"fast").animate({left:"0px"},"fast");
+    });    
+ </script>
+ <script type="text/javascript">
+ /*=======================================  轮播图====================================================*/ 
+        var imgboxli = $(".imgbox ul li");
+        var i = 0;
+        var index =0;
+         function bottom(i){
+            // console.log("aa");
+             for (var a = 0; a < 8; a++) {
+                $(".banner-bottom li").eq(a).css({background:"#e8e8e8"}); 
+            }
+             $(".banner-bottom li").eq(i).animate({backgroundColor:"#45494d"},"slow",function(){
+                // $(".banner-bottom li").eq(i).css({background:"#45494d"});
+             });
+            if (i == 8) {
+                  $(".banner-bottom li").eq(0).animate({backgroundColor:"#45494d"},"slow",function(){
+                // $(".banner-bottom li").eq(0).css({background:"#45494d"});
+             });
+            } 
+        }
+        function next (){
+            index = i;
+            // console.log(index);
+            i = i+1    
+            if (i > 8) {
+                i = 1;
+            }
+            $(".imgbox ul li").eq(i).fadeIn(1000).siblings("li").fadeOut(1000);
+            // setTimeout(bottom(i),1000);
+            bottom(i);
+        }
+       
+        function pre(){
+            index = i;
+            console.log(index);
+            i = i-1    
+            if (i < 0) {
+                i = 7;
+            }
+            $(".imgbox ul li").eq(i).fadeIn(1000).siblings("li").fadeOut(1000);
+            bottom(i);
+        }
+        var timer = setInterval(next,2000);
+        $("#sp2").click(function(){
+            clearInterval(timer);
+            next();
+        });
+        $("#sp1").click(function(){
+            clearInterval(timer);
+            console.log(index);
+            pre();
+        });
+        $(".imgbox").mouseenter(function(){
+            clearInterval(timer);
+        });
+        $(".imgbox").mouseleave(function(){
+            clearInterval(timer);
+            timer =setInterval(next,2000);
+        });
+
+        var aa = document.getElementsByClassName("banner-bottom")[0].children;
+         for (var a = 0; a < 8; a++) {
+              aa[a].index = a;
+              aa[a].onclick = function(){
+                 clearInterval(timer);
+                console.log(this.index);
+                $(".imgbox ul li").eq(this.index).fadeIn(1000).siblings("li").fadeOut(1000);
+                bottom(this.index);
+                i = this.index;
+              }
+         };
+    </script>
+</html>

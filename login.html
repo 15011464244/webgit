@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>登录</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+	<a href="http://www.iliangcang.com/i/home/" class="login"><img  src="img/nlicon.png"></img></a>
+	<div class="form" action="" method="" style="font-size: 18px;">
+	<input type="" name="" placeholder="输入用户名" class="username" id="name" required="required">
+	<input  name="code" value="" placeholder="输入密码" class="password" id="password" required="required">	
+	<div style="margin-top: 20px;font-size: 12px;">
+		<input type="checkbox" name="isauto" value="1" checked="checked" style="vertical-align:middle;">
+	    <span style="vertical-align:middle;">自动登录</span><a href="http://www.iliangcang.com/i/ufindpwd/"><span style="vertical-align:middle;margin-left: 160px;">忘记密码？</span></a>
+	</div>
+	<input type="submit" value="登录" class="loginbutton" style="border-radius: 4px;font-weight: normal;" id="loginbutton">
+	</div>
+	<div class="more">
+		<a href="http://www.iliangcang.com/i/oauth/qq/" class="qq"></a>
+		<a href="http://www.iliangcang.com/i/oauth/weibo/" class="sina"></a>
+		<a href="http://www.iliangcang.com/i/oauth/douban/" class="douban"></a>
+		<a href="http://www.iliangcang.com/i/oauth/tqq/" class="tengxun"></a>
+		<a href="zhuce.html" class="zhuce">注册良仓</a>
+	</div>
+	
+	<!-- <a href=""><span class="more">更多登录方式></span></a> -->
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
+<script type="text/javascript">
+// 	function addDivLayer()
+// {
+// 	if(jQuery('#sysMessageWin').height()){
+// 		return false;
+// 	}
+// 	var winW = jQuery(window).width();
+// 	var winH = jQuery(window).height();
+// 	var html = "";
+// 	var style = 'width:'+winW+'px;height:'+winH+'px;';
+// 	html = '<div class="divLayer" style="'+style+'"></div>';
+// 	jQuery('body').append(html);
+// }
+
+
+// function showMessageNote(msg){
+// 	addDivLayer();
+// 	var winW = jQuery(window).width();
+// 	var winH = jQuery(window).height();
+// 	var scrlTop = jQuery(window).scrollTop();
+// 	var left = (winW-433)/2;
+// 	var top = scrlTop;
+// 	if(jQuery('#sysMessageWin').height()){
+// 		top = (winH-parseInt(jQuery("#sysMessageWin").height()))/2
+// 		jQuery("#sysMessageWin").css({"top":top+'px'});
+// 		return false;
+// 	}
+// 	var style = "";
+// 	style = "left:"+left+"px;top:"+top+"px;z-index: 100000000;_position:absolute;";
+// 	var html = "";
+// 	html += '<div class="popWindow" id="sysMessageWin" style="'+style+'">';
+// 	html += '<div id="countdown-hide" style="display:none;"></div>';
+// 	html += '<div class="popHeader"><span class="close" title="鍏抽棴" onclick="jQuery(\'#sysMessageWin\').remove();removeDivLayer();"></span></div>';
+// 	html += '<div class="content">';
+// 	html += '<div class="lcMsgNote">';
+// 	if(msg!=undefined)html += msg;
+// 	html += '</div>';
+// 	html += '</div>';
+// 	html += '<div class="popFooter"></div>';
+// 	html += '</div>  ';
+// 	jQuery('body').append(html);
+// 	top = (winH-parseInt(jQuery("#sysMessageWin").height()))/2
+// 	jQuery("#sysMessageWin").css({"top":top+'px'}).show();
+	
+// 	//3绉掑悗鑷姩鍏抽棴
+// 	var shortly = new Date(); 
+// 	shortly.setSeconds(shortly.getSeconds() + 2.9); 
+// 	jQuery("#countdown-hide").countdown({until: shortly,onExpiry: function(){jQuery('#sysMessageWin').remove();removeDivLayer();}, onTick: function(){}});
+// //	jQuery("#countdown-hide").countdown('pause');
+// //	setTimeout(function(){
+// //		jQuery("#countdown-hide").countdown('resume');						
+// //	},800);
+// }
+</script>
+<script type="text/javascript">
+	var button = document.getElementById('loginbutton')
+	// console.log(button);
+	$(".loginbutton").click(function(){
+		  // txt=$("input").val();
+		  if ($("#name").val() =="") {
+		  	// alert("请输入您的用户名");
+		  	showMessageNote("请输入您的用户名");
+		  	return;
+		  }else if ($("#name").val() !=""&&$("#password").val() =="") {
+		  	alert("请输入您的密码");
+		  	return;
+		  }
+		  console.log($("#name").val());
+		  console.log($("#password").val());
+		  $.post("http://lc.shudong.wang/api_user.php",{status:"login",username:$("#name").val(),password:$("#password").val()},function(result){
+		  	console.log(result)
+		    	var result = JSON.parse(result);
+		    	if (result.code == 0) {
+		    		var bb = $("#name").val();
+		    		localStorage.currentName=$("#name").val();
+		    		setTimeout(function(){
+		    			window.location.href="liangcang.html"	; 
+		    		}, 1000);
+		    		alert("用户登录成功");
+		    	}else if(result.code == 2003){
+		    		alert("用户名不存在");
+		    	}else if(result.code == 1000){
+		    		alert("输入的用户名错误");
+		    	}else if(result.code == 1001){
+		    		alert("输入的密码错误");
+		    	}
+ 	 	   });
+	});
+</script>
+</html>

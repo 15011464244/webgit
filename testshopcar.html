@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{height: 20px;width: 100px;}
+		#shopcar{height:100px;width: 100px;border: 1px solid gray;}
+	</style>
+</head>
+<body>
+<input type="checkbox" name="shop" value="电风扇">电风扇
+<input type="checkbox" name="shop" value="空调">空调
+<input type="checkbox" name="shop" value="巧乐兹">巧乐兹
+<input type="checkbox" name="shop" value="兵工厂">兵工厂
+<input type="checkbox" name="shop" value="冰箱">冰箱
+<button id="aa">加入购物车</button>
+<div id="shopcar"></div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+    var shop = document.getElementById("shopcar");
+	var aa = document.getElementById("aa");
+	aa.onclick=function(){
+		var  shopcar = []; 
+		var input = document.getElementsByTagName("input");
+	for (var i = 0; i < input.length; i++) {
+		if(input[i].checked == true){
+			shopcar.push(input[i].value);
+		}
+	 }
+	 localStorage.setItem("shop",shopcar.toString());
+	}
+	
+	// if(window.addEventListener){ 
+	// window.addEventListener("storage",handle_storage,false); 
+	// }
+	// else if(window.attachEvent)
+	// { 
+	// window.attachEvent("onstorage",handle_storage); 
+	// } 
+	// function handle_storage(e){
+	// if(!e){e=window.event;} 
+	// console.log("adfasdfas");
+	// }
+	window.addEventListener('storage', function(ev) {
+        console.log(ev);
+        var shopaa = ev.newValue.split(",");
+        // console.log(shopaa);
+        var html = "";
+
+        for (var i = 0; i < shopaa.length; i++) {
+        	html+=	"<div>"+shopaa[i]+"<div>";
+        }
+        console.log(html);
+        shop.innerHTML=html;
+    })
+</script>
+</html>

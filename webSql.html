@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#content{width: 500px;height: 100px;}
+		.liuyan{width: 90%;height: 40px;border: 1px solid gray;margin-bottom: 20px;}
+		.tijiao{display: none;}
+	</style>
+</head>
+<body>
+<textarea id="content"></textarea>  <input type="button" name="" id="button" value="提交">
+<div class="liuyan" contenteditable="false"></div><button>删除</button><input type="button" name="" value="更改" class="update"><input type="button" name="" value="提交" class="tijiao">
+<div class="liuyan" contenteditable="false"></div><button>删除</button><input type="button" name="" value="更改" class="update"><input type="button" name="" value="提交" class="tijiao">
+<div class="liuyan" contenteditable="false"></div><button>删除</button><input type="button" name="" value="更改" class="update"><input type="button" name="" value="提交" class="tijiao">
+<div class="liuyan" contenteditable="false"></div><button>删除</button><input type="button" name="" value="更改" class="update"><input type="button" name="" value="提交" class="tijiao">
+<div class="liuyan" contenteditable="false"></div><button>删除</button><input type="button" name="" value="更改" class="update"><input type="button" name="" value="提交" class="tijiao">
+</body>
+<script type="text/javascript">
+	var i = 0;
+	var content =  document.getElementById("content");
+	var button = document.getElementById("button");
+	var liuyan = document.getElementsByClassName("liuyan");
+	var update = document.getElementsByClassName("update");
+	var tijiao = document.getElementsByClassName("tijiao");
+	var del = document.getElementsByTagName("button");
+	var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+	var msg;
+	db.transaction(function (tx) {
+			 tx.executeSql('SELECT * FROM gongjie order by id desc limit 0,5', [], function (tx, results) {
+			    var len = results.rows.length, i;
+			    for (i = 0; i < len; i++){
+			        msg = results.rows.item(i).log ;
+			        liuyan[i].innerHTML = msg;
+			    }
+			}, null);
+		});
+	 button.onclick = function(){
+	 	if (content.value.trim() == '') {
+			alert("您输入的内容为空，请重新输入");
+			return;
+		}
+	 	db.transaction(function (tx) {
+	 		tx.executeSql('CREATE TABLE IF NOT EXISTS gongjie (id unique, log)');
+	 		tx.executeSql('SELECT max(id) as aa FROM gongjie', [], function (tx, results) {
+	 			// console.log(results.rows.item(0).aa);
+	 			i = results.rows.item(0).aa;
+			    i++;
+			    msg = content.value; 
+			    tx.executeSql('INSERT INTO gongjie (id, log) VALUES (?, ?)',[i,msg]);
+			}, null);
+		});
+		db.transaction(function (tx) {
+			 tx.executeSql('SELECT * FROM gongjie order by id desc limit 0,5', [], function (tx, results) {
+			    var len = results.rows.length, i;
+			    for (i = 0; i < len; i++){
+			        msg = results.rows.item(i).log ;
+			        liuyan[i].innerHTML = msg;
+			        content.value = "";
+			    }
+			}, null);
+		});
+		
+	 }
+	 for (var i = 0; i < 5; i++) {
+	 	 del[i].index = i;
+		 del[i].onclick = function(){
+
+		 	var num = this.index;
+		 	db.transaction(function (tx) {
+			 tx.executeSql('SELECT id FROM gongjie order by id desc limit ?,1', [num], function (tx, results) {
+			   console.log(results.rows.item(0).id);
+			   num = results.rows.item(0).id
+			   tx.executeSql('DELETE FROM gongjie  WHERE id=?',[num]);
+			}, null);
+		});
+		 	db.transaction(function (tx) {
+				 tx.executeSql('SELECT * FROM gongjie order by id desc limit 0,5', [], function (tx, results) {
+				    var len = results.rows.length, i;
+				    for (i = 0; i < len; i++){
+				        msg =  results.rows.item(i).log ;
+				        liuyan[i].innerHTML = msg;
+				    }
+				}, null);
+		    });
+		 }
+		 
+    }
+     for (var i = 0; i < 5; i++) {
+	 	 update[i].index = i;
+		 update[i].onclick = function(){
+		 	liuyan[this.index].setAttribute("contenteditable","true");
+		 	tijiao[this.index].setAttribute('style','display:inline-block;')
+		 }
+		 
+    }
+    for (var i = 0; i < 5; i++) {
+
+	 	 tijiao[i].index = i;
+		 tijiao[i].onclick = function(){
+		 	liuyan[this.index].setAttribute("contenteditable","false");
+		 	tijiao[this.index].setAttribute('style','display:none;')
+		 	msg =  liuyan[this.index].innerHTML;
+    	    console.log(msg);
+		 	var num = this.index;
+		 	db.transaction(function (tx) {
+			 tx.executeSql('SELECT id FROM gongjie order by id desc limit ?,1', [num], function (tx, results) {
+			   console.log(results.rows.item(0).id);
+			   num = results.rows.item(0).id
+			    tx.executeSql('UPDATE gongjie SET log=? WHERE id=?',[msg,num]);
+			}, null);
+		});
+		 	db.transaction(function (tx) {
+				 tx.executeSql('SELECT * FROM gongjie order by id desc limit 0,5', [], function (tx, results) {
+				    var len = results.rows.length, i;
+				    for (i = 0; i < len; i++){
+				        msg = results.rows.item(i).log ;
+				        liuyan[i].innerHTML = msg;
+				    }
+				}, null);
+		    });
+		 }
+		 
+    }
+</script>
+</html>

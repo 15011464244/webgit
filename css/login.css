@@ -1,0 +1,19 @@
+*{margin: 0;padding: 0;}
+*:focus {outline:none;}
+.login{display: block;width: 300px;height: 200px;margin: 0 auto;margin-top: 80px; margin-bottom: 50px}
+.login img{display: block; text-decoration: none;border-width: : 0px;  width: 113px;height: 195px;margin: 0 auto;}
+.form{width: 300px; margin: 0 auto;}
+.loginbutton{ cursor: pointer;width: 300px;height: 50px;border: 0;background: #25292e;font-size: 18px;font-weight: bold;color: #ffffff;margin-top: 9px;margin-bottom: 10px;border-radius: 4px;font-weight: normal;text-align: center;}
+.password{margin-top: 20px; border:0;border-bottom:solid 1px #000;font-size: 18px;width:265px;height:34px;background: url('http://www.iliangcang.com/images/nlcode.png') no-repeat 2px 8px;padding-left:35px;}
+.username{border:0;border-bottom:solid 1px #000;font-size: 18px;width:265px;height:34px;background: url('http://www.iliangcang.com/images/nlphone.png') no-repeat 0px 6px;padding-left:35px;}
+.more{text-align: center;color: #000;font-size: 15px;width: 300px;margin: 0 auto;display: block;}	
+a{text-decoration: none;text-decoration: none;color:#000;}
+.qq{width: 36px;height: 36px;margin-left: 5px; float: left; background: url(http://imgs-qn.iliangcang.com/images/default/qqnormal.png) no-repeat;}
+.qq:hover{ background: url(http://imgs-qn.iliangcang.com/images/default/qqmouse.png) no-repeat;}
+.sina{width: 36px;height: 36px;margin-left: 5px; float: left;background: url(http://imgs-qn.iliangcang.com/images/default/xinlangnormal.png) no-repeat;}
+.sina:hover{background: url(http://imgs-qn.iliangcang.com/images/default/xinlangmouse.png) no-repeat;}
+.douban{width: 36px;height: 36px;margin-left: 5px; float: left;background: url(http://imgs-qn.iliangcang.com/images/default/doubannormal.png) no-repeat;}
+.douban:hover{background: url(http://imgs-qn.iliangcang.com/images/default/doubanmouse.png) no-repeat}
+.tengxun{width: 36px;height: 36px;margin-left: 5px; float: left;background: url(http://imgs-qn.iliangcang.com/images/default/tengxunnormal.png) no-repeat;}
+.tengxun:hover{background: url(http://imgs-qn.iliangcang.com/images/default/tengxunmouse.png) no-repeat;}
+.zhuce{padding-bottom: 3px;border-bottom: 1px solid #666;font-size: 14px;margin-left: 40px;}

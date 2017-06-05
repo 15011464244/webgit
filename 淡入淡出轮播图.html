@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jquery 轮播图</title>
+    </head>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+       .imgbox{width: 600px;height: 300px;position: relative;}
+       .imgbox .banner {position: relative;width: 600px;height: 300px;}
+       .imgbox .banner>li{position: absolute;width: 600px;height: 300px;}
+       .imgbox .banner>li>a>img{width: 600px;height: 300px;}
+        #sp1{position:absolute;top: 50%;margin-top: -25px;left: 25px;background: url(img/circle_right_arrow1.png) no-repeat center;width: 50px;height: 50px;z-index: 999}
+        #sp2{position:absolute;top: 50%;margin-top: -25px;right: 25px;background: url(img/circle_left_arrow1.png) no-repeat center;width: 50px;height: 50px;z-index: 999}
+        .imgbox .banner-bottom{margin-top: 10px;margin-left: 20%;}
+        .imgbox .banner-bottom li{float: left;height: 4px;width: 20px; background: #e8e8e8;margin-left: 2px;list-style: none; }
+    </style>
+    <script src="js/jquery.js" charset="utf-8"></script>
+    <body>
+        <div class="imgbox">
+            <ul class="banner">
+                <li ><a href=""><img src="img/0.jpg" alt=""></a></li>
+                <li ><a href=""><img src="img/1.jpg" alt=""></a></li>
+                <li ><a href=""><img src="img/2.jpg" alt=""></a></li>
+                <li ><a href=""><img src="img/3.jpg" alt=""></a></li>
+                <li ><a href=""><img src="img/0.jpg" alt=""></a></li>
+            </ul>
+            <span id="sp1"></span><span id="sp2"></span>
+            <ul class="banner-bottom">
+                <li style="background: #45494d"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var imgboxli = $(".imgbox ul li");
+        var i = 0;
+        var index =0;
+         function bottom(i){
+             for (var a = 0; a < 4; a++) {
+                $(".banner-bottom li").eq(a).css({background:"#e8e8e8"}); 
+            }
+            $(".banner-bottom li").eq(i).css({background:"#45494d"});
+            if (i == 4) {
+                $(".banner-bottom li").eq(0).css({background:"#45494d"});
+            } 
+        }
+        function next (){
+            index = i;
+            console.log(index);
+            i = i+1    
+            if (i > 4) {
+                i = 1;
+            }
+            $(".imgbox ul li").eq(i).fadeIn(1000).siblings("li").fadeOut(1000);
+            bottom(i);
+        }
+       
+        function pre(){
+            index = i;
+            console.log(index);
+            i = i-1    
+            if (i < 0) {
+                i = 3;
+            }
+            $(".imgbox ul li").eq(i).fadeIn(1000).siblings("li").fadeOut(1000);
+            bottom(i);
+        }
+        var timer = setInterval(next,2000);
+        $("#sp2").click(function(){
+            clearInterval(timer);
+            next();
+        });
+        $("#sp1").click(function(){
+            clearInterval(timer);
+            console.log(index);
+            pre();
+        });
+        $(".imgbox").mouseenter(function(){
+            clearInterval(timer);
+        });
+        $(".imgbox").mouseleave(function(){
+            clearInterval(timer);
+            timer =setInterval(next,2000);
+        });
+
+        var aa = document.getElementsByClassName("banner-bottom")[0].children;
+        console.log(aa[1]);
+         for (var a = 0; a < 4; a++) {
+              aa[a].index = a;
+              aa[a].onclick = function(){
+                 clearInterval(timer);
+                console.log(this.index);
+                $(".imgbox ul li").eq(this.index).fadeIn(1000).siblings("li").fadeOut(1000);
+                bottom(this.index);
+                i = this.index;
+              }
+         };   
+    </script>
+</html>

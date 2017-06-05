@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>注册</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/zhuce.css">
+</head>
+<body>
+	<div class="logo">
+		<a href="liangcang.html"><img src="http://www.iliangcang.com/images/default/logo_icon.png"></a>
+	</div>
+	<!-- <form action="http://lc.shudong.wang/api_user.php" method="post"> -->
+		<div class="mobil">
+		<span>用户名</span> <input type="" name="" placeholder="请输入用户名" id="name" >	
+		</div>
+		<div class="check">
+		<span>验证码</span>	<input type="" name=""  placeholder="输入验证码" ><img src="http://www.iliangcang.com/i/authcode/4593/"><span>看不清，换一张</span>
+		</div>
+		<div class="password">
+		<span>创建密码</span>	<input type="" name="" id="password" placeholder="6－20位字符组成，区分大小写" >
+		<div class="tiao">
+			<div class="tiao-top">
+				<div class="tiao-top-first"></div><div class="tiao-top-second"></div><div class="tiao-top-third"></div>
+			</div>
+			<div class="tiao-bottom">
+				<span class="ruo">弱</span><span class="zhong">中</span><span class="qiang">强</span></div>
+			</div>
+		</div>
+		
+		<div class="mkpassword">
+		<span>确认密码</span>	<input type="password" name="" placeholder="确认密码" id="mkpassword">
+			
+		</div>
+		<div style="margin-top: 20px;font-size: 12px;" class="maketrue">
+			<input type="checkbox" name="isauto" value="1" checked="checked" style="vertical-align:middle;" id="checkbox">
+		   	<span>同意</span><a href="http://www.iliangcang.com/i/our/service" style="color: #0c79cc"> <span>良仓注册条款</span></a>
+		 </div>
+		<input type="submit" value="立即注册" class="loginbutton" id="loginbutton" style="border-radius: 4px;font-weight: normal;">
+		<!-- </form> -->
+		<div class="more">
+			<a href="http://www.iliangcang.com/i/oauth/qq/" class="qq"></a>
+			<a href="http://www.iliangcang.com/i/oauth/weibo/" class="sina"></a>
+			<a href="http://www.iliangcang.com/i/oauth/douban/" class="douban"></a>
+			<a href="http://www.iliangcang.com/i/oauth/tqq/" class="tengxun"></a>
+			<a href="login.html" class="zhuce">登录良仓</a>
+		</div>
+	</form>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	var button = document.getElementById('loginbutton');
+	var password = document.getElementById('password');
+	var mkpassword = document.getElementById('mkpassword');
+	var checkbox = document.getElementById('checkbox');
+	var tiaotopfirst = document.getElementsByClassName("tiao-top-first")[0];
+	var tiaotopsecond = document.getElementsByClassName("tiao-top-second")[0];
+	var tiaotopthird = document.getElementsByClassName("tiao-top-third")[0];
+
+
+	password.oninput = function(){
+		console.log(password.value.length);
+		var length = password.value.length;
+		    tiaotopfirst.style.backgroundColor = "#fff";
+			tiaotopsecond.style.backgroundColor = "#fff";
+			tiaotopthird.style.backgroundColor = "#fff";
+		var num = 0;
+        if (length>=6) {
+			var reg = /[a-z]/;
+			var aa = reg.test(password.value);
+			num +=aa;
+			var reg = /[A-Z]/;
+			var aa = reg.test(password.value);
+			num +=aa;
+			var reg = /[0-9]/;
+			var aa = reg.test(password.value);
+			num +=aa;
+			var reg = /[^0-9a-zA-Z]/;
+			var aa = reg.test(password.value);
+			num +=aa;
+			if (num==1) {
+				tiaotopfirst.style.backgroundColor = "red";
+			}else if(num ==2){
+				tiaotopfirst.style.backgroundColor = "red";
+				tiaotopsecond.style.backgroundColor = "green";
+			}else{
+				tiaotopfirst.style.backgroundColor = "red";
+				tiaotopsecond.style.backgroundColor = "green";
+				tiaotopthird.style.backgroundColor = "yellow";
+			}
+			console.log(num)
+		}else{			
+			tiaotopfirst.style.backgroundColor = "#fff";
+			tiaotopsecond.style.backgroundColor = "#fff";
+			tiaotopthird.style.backgroundColor = "#fff";
+		}
+	}
+	password.onchange =function(){
+		if ($("#password").val().length<6||$("#password").val().length>20) {
+		  	alert("密码长度为6-20位字符");
+		  }
+	}
+	// mkpassword.onchange =function(){
+	// 	if($("#password").val() !== $("#mkpassword").val()){
+	// 	  	alert("您两次输入的密码不同请重新输入");
+	// 	  }
+	// }
+	$(".loginbutton").click(function(){
+		var reg1 = /[^\u4e00-\u9fa5]/;  
+		console.log(reg1.test($("#name").val()));
+		  
+		  if ($("#name").val() =="") {
+		  	alert("请输入您的用户名");
+		  	return;
+		 }else if(!reg1.test($("#name").val())){
+		 	alert("用户名是3-20位字母数字下滑线");
+		 	return;
+		  }else if ($("#password").val() =="") {
+		  	alert("请输入您的密码");
+		  	return;
+		  }else if($("#password").val() !== $("#mkpassword").val()){
+		  	alert("您两次输入的密码不同请重新输入");
+		  	return;
+		  }else if($("#name").val().length<3){
+		  	alert("用户名至少3位字符");
+		  	return;
+		  }else if ($("#password").val().length<6||$("#password").val().length>20) {
+		  	alert("密码长度为6-20位字符");
+		  	return;
+		  }else if (!checkbox.checked)/*$("#checkbox").prop("checked")*/ {
+		  	alert("请同意良仓注册条款");
+		  	return;
+		  }
+	
+		  $.post("http://lc.shudong.wang/api_user.php",{status:"register",username:$("#name").val(),password:$("#password").val()},function(result){
+		    	var result = JSON.parse(result);
+		    	if (result.code == 0) {
+		    		localStorage.currentName=$("#name").val();
+		    		setTimeout("javascript:location.href='liangcang.html'", 1000);
+		    		alert("用户注册成功");
+		    	}else if(result.code == 2001){
+		    		alert("用户名已注册");
+		    	}
+ 	 	   });
+	});
+</script>
+</html>

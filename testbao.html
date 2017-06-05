@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+  </title>
+  <meta charset="utf-8">
+</head>
+<body>
+<div id="getting-started"></div>
+<!-- 	<a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=4177348326',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','图片链接|默认为空','标题|默认当前页标题','内容链接|默认当前页location','页面编码gb2312|utf-8默认gb2312'));">分享至微博</a>  -->
+<b>分享</b>
+</body>
+<script src="js/jquery.js" ></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
+<script type="text/javascript">
+//   $("#getting-started")
+//   .countdown("2017/07/01", function(event) {
+//     $(this).text(
+//       event.strftime('%D days %H:%M:%S')
+//     );
+//   });
+//   function postToSina(title,pic,site)
+// {
+// 	 var param = {
+// 		url:site,
+// 		type:'5',
+// 		count:'',
+// 		appkey:'4177348326', 
+// 		title:encodeURI(title+""),
+// 		pic:pic,
+// 		ralateUid:'',
+// 		language:'zh_cn',
+// 		rnd:new Date().valueOf()
+// 	  }
+// 	  var temp = [];
+// 	  var s = window.screen; 
+// 	  for( var p in param ){
+// 		temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+// 	  }
+// 	  var url = "http://service.weibo.com/share/share.php?"+temp.join("&");
+// 	  window.open(url,"_blank",['toolbar=0,status=0,resizable=1,width=600,height=500,left=',(s.width-440)/2,',top=',(s.height-430)/2].join(''))
+// }
+
+// function postToSina20140214(text,pic,site)
+// {
+// 	 var param = {
+// 		url:site,
+// 		type:'5',
+// 		count:'',
+// 		appkey:'4177348326',
+// 		title: text,
+// 		pic:pic,
+// 		ralateUid:'',
+// 		language:'zh_cn', 
+// 		rnd:new Date().valueOf()
+// 	  }
+// 	  var temp = [];
+// 	  var s = window.screen; 
+// 	  for( var p in param ){
+// 		temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+// 	  }
+// 	  var url = "http://service.weibo.com/share/share.php?"+temp.join("&");
+// 	  window.open(url,"_blank",['toolbar=0,status=0,resizable=1,width=600,height=500,left=',(s.width-440)/2,',top=',(s.height-430)/2].join(''));
+// }
+
+
+// function postToQQ(title,pic,site){
+// 		var p = {
+// 			url:site,
+// 			showcount:'0',
+// 			desc:title+"  ",
+// 			summary:'',
+// 			title:'',
+// 			site:encodeURI('liangcang.com'),
+// 			pics:pic, 
+// 			style:'203',
+// 			width:98,
+// 			height:22,
+// 			otype:'share'
+// 		};
+// 		 var s = window.screen;
+// 		var param = [];
+// 		for(var i in p){
+// 			param.push(i + '=' + encodeURIComponent(p[i]||''));
+// 		}
+		
+// 		var url = "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?"+param.join("&");
+// 		window.open(url,"_blank",['toolbar=0,status=0,resizable=1,width=600,height=500,left=',(s.width-440)/2,',top=',(s.height-430)/2].join(''));
+// 		jQuery('#postToWin').remove();removeDivLayer();
+// }
+
+
+// function postToDouban(title,pic,site)
+// {
+// 	console.log("aa");
+// 		var d=document,
+// 		e=encodeURIComponent,
+// 		s1=window.getSelection,
+// 		s2=d.getSelection,
+// 		s3=d.selection,
+// 		s=s1?s1():s2?s2():s3?s3.createRange().text:'',
+// 		sre = window.screen,
+// 		r='http://www.douban.com/recommend/?url='+e(site)+'&title='+e(title+"")+'&sel='+e(s)+'&v=1',
+// 		x=function(){
+// 			if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330,left='+(sre.width-440)/2+',top='+(sre.height-430)/2))location.href=r+'&r=1'
+// 		};
+// 		if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}
+// }
+
+// $("b").click(function(){
+// 	postToTQQ('','','');
+// });
+// getCookie = function(sName)
+// {
+//   // cookies are separated by semicolons
+//   var aCookie = document.cookie.split("; ");
+//   for (var i=0; i < aCookie.length; i++)
+//   {
+//     // a name/value pair (a crumb) is separated by an equal sign
+//     var aCrumb = aCookie[i].split("=");
+//     if (sName == aCrumb[0])
+//       return decodeURIComponent(aCrumb[1]);
+//   }
+
+//   // a cookie with the requested name does not exist
+//   return null;
+// }
+
+// setCookie = function(sName, sValue, sExpires)
+// {
+//   var sCookie = sName + "=" + encodeURIComponent(sValue);
+//   if (sExpires != null)
+//   {
+//     sCookie += "; expires=" + sExpires;
+//   }
+
+//   document.cookie = sCookie;
+// }
+
+// removeCookie = function(sName,sValue)
+// {
+//   document.cookie = sName + "=; expires=Fri, 31 Dec 1999 23:59:59 GMT;";
+// }
+// setCookie("gongjie","aaaaaaaa","fasfasfdsafas");
+// // removeCookie("gongjie");
+// console.log(getCookie("gongjie"));
+
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	用户<input type="" name="">
+	密码<input type="" name="">
+	<button>提交</button>
+	<p></p>
+
+	
+</body>
+<script type="text/javascript">
+	var input = document.getElementsByTagName("input");
+	var button =  document.getElementsByTagName("button");
+	var p = document.getElementsByTagName("p");
+	button[0].onclick = function(){
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange =function(){
+			if (xhr.readyState == 4) {
+				p[0].innerHTML = xhr.responseText;
+			}
+		} 
+		xhr.open("get","https://chongzhi.jd.com/json/order/search_searchPhone.action?mobile=15114565130&_=1494489988706",true);
+		xhr.send(null);
+	}
+</script>
+</html>

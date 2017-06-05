@@ -1,0 +1,43 @@
+*{margin:0;padding: 0}
+*:focus {outline:none;}
+li{list-style: none;} 
+a{text-decoration: none;}
+body{background-color: gray ; font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    padding-right: 20px;}
+.logo{width: 226;height: 106px;margin: 0 auto;margin-left: 42%;margin-top:10%;}
+.mobil{margin-left: 30%;width: 565px;height: 50px; margin-top: 10px;}
+.mobil input{width: 320px;height: 50px;	padding-left: 10px;margin-left: 80px;}
+.check{margin-left: 30%;width: 565px;height: 50px;margin-top: 10px;position: relative;}
+.check input{width: 240px;height: 50px;	padding-left: 10px;margin-left: 80px;}
+.check img{margin-left: 20px;position: relative; left: 0px; top: 10px;}
+.password{margin-left: 30%;width: 565px;height: 50px;margin-top: 10px;position: relative;}
+.password input{width: 320px;height: 50px;	padding-left: 10px;margin-left: 66px;}
+.mkpassword{margin-left: 30%;width: 565px;height: 50px;margin-top: 10px;}
+.mkpassword input{width: 320px;height: 50px;	padding-left: 10px;margin-left: 66px;}
+.tiao{position: absolute;width: 130px;height: 50px;left: 85%;top: 20%;}
+.tiao-top{background: #fff;width: 130px;margin-top: 10px;height: 10px;}
+.tiao-top-first{width: 43px;height: 10px;float: left;}
+.tiao-top-second{width: 43px;height: 10px;float: left;}
+.tiao-top-third{width: 44px;height: 10px;float: left;}
+.tiao-bottom .ruo{margin-right: 42px;}
+.tiao-bottom .zhong{margin-right: 42px;}
+
+.maketrue,.loginbutton,.more{margin-left: 38%;width: 565px;height: 50px;margin-top: 10px;}
+.loginbutton{ cursor: pointer;width: 300px;height: 50px;border: 0;background: #25292e;font-size: 18px;font-weight: bold;color: #ffffff;margin-top: 0px;margin-bottom: 10px;border-radius: 4px;font-weight: normal;}
+
+	
+
+a{text-decoration: none;text-decoration: none;color:#000;}
+.qq{width: 36px;height: 36px;margin-left: 5px; float: left; background: url(http://imgs-qn.iliangcang.com/images/default/qqnormal.png) no-repeat;}
+.qq:hover{ background: url(http://imgs-qn.iliangcang.com/images/default/qqmouse.png) no-repeat;}
+.sina{width: 36px;height: 36px;margin-left: 5px; float: left;background: url(http://imgs-qn.iliangcang.com/images/default/xinlangnormal.png) no-repeat;}
+.sina:hover{background: url(http://imgs-qn.iliangcang.com/images/default/xinlangmouse.png) no-repeat;}
+.douban{width: 36px;height: 36px;margin-left: 5px; float: left;background: url(http://imgs-qn.iliangcang.com/images/default/doubannormal.png) no-repeat;}
+.douban:hover{background: url(http://imgs-qn.iliangcang.com/images/default/doubanmouse.png) no-repeat}
+.tengxun{width: 36px;height: 36px;margin-left: 5px; float: left;background: url(http://imgs-qn.iliangcang.com/images/default/tengxunnormal.png) no-repeat;}
+.tengxun:hover{background: url(http://imgs-qn.iliangcang.com/images/default/tengxunmouse.png) no-repeat;}
+.zhuce{padding-bottom: 3px;border-bottom: 1px solid #666;font-size: 14px;margin-left: 40px;}

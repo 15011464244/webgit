@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+	div{background-color: #fff;height: 100px;width: 100px;margin: 10px 0;border: 1px solid gray;}
+</style>
+<body>
+<div  id="effect">dfasdfasfdasfsafsafas</div>
+<div></div>
+<div></div>
+
+<div></div><div></div>
+<div></div>
+<div></div>
+
+</body>
+ <script src="js/jquery.js" charset="utf-8"></script>
+ <!-- <script type="text/javascript" src="js/jquery.color.js"></script> -->
+ <script type="text/javascript" src="js/jquery.css.js"></script>
+
+ <script type="text/javascript">
+ 	$(".aa").click(function(){
+ 			console.log("aaa");
+	 	$(".aa").animate({backgroundColor: "#aa0000", color: "#fff"},"slow",function(){
+	 		console.log('aa');
+	 		});
+ 	});
+ 	 $( "#effect" ).animate({
+          backgroundColor: "#aa0000",
+          color: "#aa0000",
+          width: 500     
+        }, 1000 );
+ 	
+ 	 /*$(".banner-bottom li").eq(i).animate({backgroundColor:"#45494d"},"slow",function(){*/
+
+ </script>
+ 
+</html>

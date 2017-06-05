@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	.head{position: fixed;}
+	.first{width: 1000px;height: 100px;background: red;}
+	.second{width: 1000px;height: 200px;background: yellow;margin: 0 auto;}
+</style>
+<body>
+<div class="head">
+	<div class="first"></div>
+	<div class="second"></div>
+</div>
+<div style="height: 2000px;width: 100%;background: green;padding-top: 300px;">
+	
+</div>
+		
+</body>
+<script src="js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript">
+	 $(window).scroll(function(event) {
+	 	if($(window).scrollTop()>100){
+	 		if($(".first").is(":animated")){
+                return;
+            }
+	 		$(".first").slideUp("fast");
+	 	}
+	 	if ($(window).scrollTop()<100) {
+	 		if($(".first").is(":animated")){
+                return;
+            }
+	 		$(".first").slideDown("fast");
+	 	}
+	 })
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+	function stark() {
+		console.log("stark");
+	}
+	// $.ajax(
+	// 	{
+	// 	    url: 'http://yx.xianjian.com/p/api.php?method=wf&api_key=nimakdkeiLdkfen2lidkdlDLLEKd&page=1&per_page=10&tag=&type=5&order=2&_ksTS=1494829656978_32&jsoncallback=?',
+	// 	   // type:'post',  因为是jsonp的原理是通过<script>标签里的src来进行跨域访问的所以永远是get请求，所以type可以不用写
+	// 	    dataType: 'jsonp',
+	// 	    jsonpCallback : 'stark',//如果设置了jsonpCallback就代表在=后面添加了值所以回来的时候先调用stark然后调用success；
+	// 	    success : function(data){
+	// 	      // $.each(data.items, function(i,item){
+	// 	      //     $("<img/>").attr("src", item.media.m).appendTo("#images");
+	// 	      //       if ( i == 9 ) return false;
+	// 	      //     });
+	// 	      console.log(data);
+	// 	    }
+	// 	})
+		$.getJSON('http://yx.xianjian.com/p/api.php?method=wf&api_key=nimakdkeiLdkfen2lidkdlDLLEKd&page=1&per_page=10&tag=&type=5&order=2&_ksTS=1494829656978_32&jsoncallback=?',{ id: 0, action: 'jobcategoryjson' },function(json){ 
+			console.log(json);
+	//要求远程请求页面的数据格式为： ?(json_data) //例如： //?([{"_name":"湖南省","_regionId":134},{"_name":"北京市","_regionId":143}]) alert(json[0]._name); 
+		}); 
+ 
+</script>
+</html>
