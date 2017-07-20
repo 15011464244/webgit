@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/accordion.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/accordion.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+	<script type="text/javascript" src="js/semantic.min.js"></script>
+</head>
+<body>
+	 <button class="ui toggle button">未激活</button>
+</body>
+<script type="text/javascript">
+window.onload=function(){
+	 var $toggle = $('.ui.toggle.button');
+    $toggle.state({
+    text: {
+      inactive : '未激活',
+      active   : '已激活'
+    }
+  });
+}
+	 
+
+</script>
+</html>

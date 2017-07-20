@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<canvas width="600px" height="300px" id="canvas">对不起你的浏览器不支持</canvas>
+</body>
+<script type="text/javascript">
+	var canvas= document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+
+	// ctx.fillStyle="rgb(222,0,0)";
+	// ctx.fillRect(100,0,100,1000);
+
+	// ctx.beginPath();
+	// ctx.moveTo(75,50);
+	// ctx.lineTo(100,75);
+	// ctx.lineTo(100,25);
+	// ctx.stroke();
+	// ctx.fill();
+
+	// ctx.getg
+	// ctx.beginPath();
+ //    ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+ //    ctx.moveTo(110,75);
+ //    ctx.arc(75,75,35,0,Math.PI,false);   // 口(顺时针)
+ //    ctx.moveTo(65,65);
+ //    ctx.arc(60,65,5,0,Math.PI*2,true);  // 左眼
+ //    ctx.moveTo(95,65);
+ //    ctx.arc(90,65,5,0,Math.PI*2,true);  // 右眼
+ //    ctx.stroke();
+
+
+      // var ctx = document.getElementById('canvas').getContext('2d'); 
+  // ctx.beginPath(); 
+  // ctx.arc(50, 50, 30, 0, Math.PI*2, true);
+  // ctx.arc(50, 50, 15, 0, Math.PI*2, true);
+  // ctx.fill("evenodd");
+
+  // ctx.font = "48px serif";
+  // ctx.strokeText("Hello world", 10, 50);
+
+
+   // var img = new Image();
+   //  img.onload = function(){
+   //    ctx.drawImage(img, 0, 0, 1000, 1000, 0, 0, 100, 100);
+   //  }
+   //  img.src = 'img/2.jpg';
+
+
+    function draw() {
+  var ctx = document.getElementById('canvas').getContext('2d');
+
+  ctx.fillRect(0,0,150,150);   // 使用默认设置绘制一个矩形
+  ctx.save();                  // 保存默认状态
+
+  ctx.fillStyle = '#09F'       // 在原有配置基础上对颜色做改变
+  ctx.fillRect(15,15,120,120); // 使用新的设置绘制一个矩形
+
+  // ctx.save();                  // 保存当前状态
+  ctx.fillStyle = '#FFF'       // 再次改变颜色配置
+  ctx.globalAlpha = 0.5;    
+  ctx.fillRect(30,30,90,90);   // 使用新的配置绘制一个矩形
+
+  ctx.restore();  
+  ctx.translate(100,100);             // 重新加载之前的颜色状态
+  ctx.fillRect(45,45,60,60);   // 使用上一次的配置绘制一个矩形
+
+  ctx.restore();
+  ctx.fillStyle="yellow";               // 加载默认颜色配置
+  ctx.fillRect(60,60,30,30);   // 使用加载的配置绘制一个矩形
+}
+	draw();
+</script>
+</html>

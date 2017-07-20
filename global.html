@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+	canvas{position: absolute;left: 0;top: 0}
+	*{margin: 0px;padding: 0px}
+	div{margin: 10 auto;width: 100%;height: 100%;position: absolute;}
+	canvas{position: fixed;}
+	#footer{width: 100%;height:40px;position: fixed;bottom: 0;background: skyblue;}
+	.button{border: 1px solid gray;width: 50px;height: 30px;margin: 5px 50%;background: yellowgreen;border-radius: 5px;}
+</style>
+<body>
+	<div id="container">
+
+	</div>
+	<canvas id="canvas" width="1024px" height="1000px"></canvas>
+	<div id="footer"><input type="button" name="" class="button" value="继续"></div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	 var thisURL = document.URL; 
+	 console.log(thisURL);
+	 var id = thisURL.split("?")[1].split("=")[1];
+	 console.log(id);
+	 var data1;
+	 var i =0;
+	 $.ajax({
+          url:"api/global.php",
+          data:{id:id},
+          success:function(data){
+               data = JSON.parse(data);
+              data1 = data.showapi_res_body.data;
+              console.log(data);
+             var str = "";
+              var templ = '<div class="box" ><img  class="box1" src="{{url}}"></div>'
+              str+= templ.replace("{{url}}", data[i]);
+             $(str).appendTo($("#container"));     
+          }
+        });
+	 	var button = document.getElementsByClassName("button")[0];
+	 	button.onclick = function(){
+	 		console.log("this");
+	 		var str = "";
+              var templ = '<div class="box" ><img  class="box1" src="{{url}}"></div>'
+              i++;
+              i %=data.length;
+              str+= templ.replace("{{url}}", data[i]);
+              
+             $(str).appendTo($("#container"));   
+	 	}
+	  document.addEventListener("touchmove", function(ev) {
+        ev.preventDefault(); 
+        for (var i = 0; i < ev.touches.length; i++) {
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.fillRect(ev.touches[i].pageX-5, ev.touches[i].pageY-5, 10, 10);
+            ctx.fillStyle = "red";
+        }
+    })
+</script>
+</html>

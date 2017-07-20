@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	/*.div{ width: 0;
+			height: 0;
+			border-width: 10px;
+			border-style: solid;
+			border-color: transparent;
+			border-right-color: red; }*/
+	.div{
+		width: 30px;
+			height: 30px;
+			border-width: 0 0 30px 30px;
+			border-style: solid;
+			border-bottom-color: red;
+			border-left-color: transparent;
+			border-radius: 0 0 30px 0;
+	}
+	.div1{
+		width: 30px;
+			height: 30px;
+			border-width: 0 0 30px 30px;
+			border-style: solid;
+			border-bottom-color: red;
+			border-left-color: transparent;
+			border-radius: 0 0 60px 0;
+	}
+</style>
+<body>
+	<div class="div"></div>
+	<div class="div1"> </div>
+	<button class="ab">fasdfasf</button>
+<img src="img/1.jpg" class="aa" style="width: 400px;height: 400pxa">
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/velocity.js"></script>
+<script type="text/javascript" src="js/velocity.ui.js"></script>
+<script type="text/javascript">
+	$(".ab").click(function(){
+		$(".aa").velocity("callout.bounce", { duration: 650 ,loop:true});
+	})
+	
+</script>
+<script type="text/javascript">
+	this.a = 20;
+	var test = {
+		a:40,
+		init: function(){
+			function go(){
+				this.a = 60;
+				console.log(this.a);
+			}
+			go.prototype.a = 50;
+			return go;
+		}
+	}
+	var p = test.init();
+	p();
+	new (test.init())();
+</script>
+</html>

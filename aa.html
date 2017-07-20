@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <style type="text/css">
+        #canvas{border: 1px solid gray}
+        #img{width: 300px;height: 150px;display: block;}
+    </style>
+<body>
+    <img src="" id="img">
+    <canvas id="canvas" width="600" height="400"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    var img1 = document.getElementById('img');
+    var ctx = canvas.getContext('2d');
+
+    var rad = 0.1;
+        
+   function aa() {
+        rad += 0.1;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+        ctx.translate(250, 250);
+        ctx.rotate(rad);
+        ctx.fillRect(-50, -50, 100, 100);
+
+        ctx.restore();
+    }
+    aa();
+    var dataURL = canvas.toDataURL("image",0.5);
+    console.log(dataURL);
+    var img = new Image();   // 创建img元素
+    img.onload = function(){
+        // 执行drawImage语句
+        ctx.drawImage(img, 10, 10)
+    }
+    img.src = dataURL;
+    img1.setAttribute("src",dataURL);
+    // setInterval(aa,300);
+</script>
+
+</html>

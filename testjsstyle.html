@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aa {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bb{
+            width: 200px;
+            height: 200px;
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/1.jpg" alt="" class="aa"  >
+
+</body>
+<script>
+    // 手指的偏移量
+    var deltaX, deltaY;
+
+    // 手指拖动后的位置
+    var nowX = 0;
+    var nowY = 0;
+    var img = document.querySelector('img');
+    // img.setAttribute("class","bb");
+    // obj.setAttribute("class", "style2");
+    img.addEventListener("touchstart", function(ev) {
+        ev.preventDefault();
+        deltaX = ev.touches[0].clientX - nowX;
+        deltaY = ev.touches[0].clientY - nowY;
+    })
+
+    img.addEventListener('touchmove', function(ev) {
+        img.setAttribute("class","bb");
+        // img.setAttribute("width","1000px");
+
+        // img.className = "bb";
+        // img.style.setProperty("width","250px");
+        // nowX = ev.touches[0].clientX - deltaX;
+        // nowY = ev.touches[0].clientY - deltaY;
+
+        // img.style.left = nowX + "px";
+        // img.style.top = nowY + "px";
+
+
+
+    })
+</script>
+
+</html>

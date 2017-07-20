@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="main" style="width: 600px;height:400px;"></div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/echarts.common.min.js"></script>
+ <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+       myChart.setOption({
+			   
+			    tooltip: {},
+			    legend: {
+			        data:['销量'],
+			        left:'103',
+			        right:"10%",
+			        width:'80%'
+			    },
+			    xAxis: {
+			        data: []
+			    },
+			    yAxis: {},
+			    series: [{
+			        name: '销量',
+			        type: 'line',
+			        data: []
+			    }]
+			});
+
+        $.ajax({
+          url:"api/weather.php",
+           data:{area:"北京"},
+          success:function(data){
+              var data = JSON.parse(data);
+              data = data.showapi_res_body.hourList;
+              console.log(data);
+              var dx= [];
+              var ds = [];
+              var weather =[];
+              for (var i = 0; i < 11; i++) {
+              		var i1 = parseInt(data[i].time.slice(8,10));
+              		var i2 = parseInt(data[i].temperature);
+              		console.log(data[i].time.slice(8,10));
+              		console.log(i1+""+i2);
+              		dx.push(i1); 
+              		ds.push(i2);   
+              		weather.push(data[i].weather);      
+              }
+              console.log(weather.join(" "));
+               myChart.setOption({
+               	 title: {
+			        text: weather.join("｜")
+			    },
+			        xAxis: {
+			            data: dx
+			        },
+			        series: [{
+			            // 根据名字对应到相应的系列
+			            name: "温度",
+			            data: ds
+			        }]
+			    });
+          }
+        });
+    </script>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+</head>
+<style type="text/css">
+	canvas{position: absolute;left: 0;top: 0}
+	*{margin: 0px;padding: 0px}
+  .middle{margin: 0 auto; }
+  .middle>ul>li{margin:0 1rem;}
+  .middle>ul>li>a{font-size: 1rem}
+  .outer{width: 80%;margin: 0 auto;margin-top: 50px;}
+  li.fixed{position: fixed;right: 10px;top: 5px}
+	div{margin: 10 auto;}
+  .box{width: 100%;margin: 0 auto;}
+
+  img{height: auto;width: 100%}
+  .pic-bottom{width: 100%;height: 2rem;margin:  0 auto}
+  .pic-bottom span{ line-height: 2rem; margin: 0 10%;}
+  .pic-bottom i{line-height: 2rem;margin: 0 2%;}
+  .pic-bottom b{display: none;}
+  .nextPage{width: 100%;height: 100px;text-align: center;margin: 10px auto;}
+  .nextPage span{background: gray;padding: 10px 20px;cursor: pointer;}
+  @media (min-width: 320px) {
+    html {
+        font-size: 50%!important;
+    }
+    .middle>ul>li{margin:0 1%;}
+    .bottom>ul>li{margin:0 1%;}
+  }
+  }
+  @media (min-width: 400px) {
+    html {
+        font-size: 50%!important;
+    }
+  }
+  @media (min-width: 828px) {
+    html {
+        font-size: 100%!important;
+    }
+    .middle>ul>li{margin:0 7%;}
+    .bottom>ul>li{margin:0 7%;}
+  }
+  @media (min-width: 1000px) {
+    html {
+        font-size: 100%!important;
+    }
+    .middle>ul>li{margin:0 13%;}
+    .bottom>ul>li{margin:0 10%;}
+  }
+  /*.b1{background: url(img/1.jpg) no-repeat center;}*/
+</style>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top  container-fluid middle">
+    <ul class="nav nav-tabs ">
+      <li role="presentation" class="active "><a href="#">picture</a></li>
+      <li role="presentation" ><a href="episode.html">episode</a></li>
+      <li role="presentation" ><a href="news.html">news</a></li>
+      <li role="presentation" class="dropdown fixed">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+          ... <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+           <li role="presentation" ><a href="weather.html">天气</a></li>
+        </ul>
+     </li>
+    </ul>
+  </nav>
+
+</div> <!-- JiaThis Button END -->
+	<div id="container" class="outer">
+		
+	</div>
+
+  <div class="nextPage"><span>下一页</span></div>
+  <nav class="navbar navbar-default navbar-fixed-bottom  container-fluid middle bottom">
+    <ul class="nav nav-tabs ">
+      <li role="presentation" class="active l1"><a href="">清纯</a></li>
+      <li role="presentation" class="l2"><a href="">性感</a></li>
+      <li role="presentation" class="l3"><a href="">气质</a></li>
+      <li role="presentation" class="l4"><a href="">唯美</a></li>
+    </ul>
+  </nav>
+ 
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.lazyload.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+
+var page1 = 1;
+var page2 = 1;
+var page3 = 1;
+var page4 = 1;
+var page =[page1,page2,page3,page4]
+function addItem(type,page,pre_page){
+	 $.ajax({
+          url:"api/index.php",
+           data:{type:type,page:page,pre_page:pre_page},
+          success:function(data){
+              var data = JSON.parse(data);
+              data = data.showapi_res_body.data;
+              console.log(data);
+              var str = "";
+              var templ = '<div class="box" ><a href="global.html?id={{id}}"><img src="img/loading.gif" class="box1" data-original="{{src}}"></a></div><div class = "pic-bottom"><span class="f1">oo</span><span class="f2">xx</span><span> 吐槽</span><i class="fa fa-weixin" aria-hidden="true"></i><i class="fa fa-weibo" aria-hidden="true"></i><i class="fa fa-qq" aria-hidden="true"></i><b>...</b></div>'
+              // 
+              for(var i = 0; i < data.length; i++) {
+                 templ1= templ.replace("{{src}}", data[i].imgurl);
+                  str+=templ1.replace("{{id}}",data[i].id);
+                }
+                var $str = $(str);
+             $(str).appendTo($("#container"));
+             $("img.box1").lazyload({
+                    placeholder : "img/loading.gif",
+                    effect:'fadeIn',
+                    failure_limit : 1
+                });
+             for(var i = 0; i < data.length; i++) {
+              $(".pic-bottom .fa-weixin").eq(i)[0].aa = i;
+             $(".pic-bottom .fa-weibo").eq(i)[0].aa = i;
+             $(".pic-bottom .fa-qq").eq(i)[0].aa = i;
+                $(".pic-bottom .fa-weibo").eq(i).click(function(){
+                    // console.log($(this)[0].aa);
+                    postToSina("妹纸图，福利呦",data[$(this)[0].aa].imgurl,""); 
+                     
+                   });
+                $(".pic-bottom .fa-qq").eq(i).click(function(){
+                    // console.log(data[$(this)[0].aa].imgurl);
+                    postToQQ("妹纸图，福利呦",data[$(this)[0].aa].imgurl,"http://www.baidu.com/"); 
+                     
+                   });
+                $(".pic-bottom .fa-weixin").eq(i).click(function(){
+                    console.log(data[$(this)[0].aa].imgurl);
+                    postToDouban("妹纸图，福利呦",data[$(this)[0].aa].imgurl,"http://www.baidu.com/"); 
+                     
+                   });
+             }
+
+          }
+        });
+   }
+   addItem(1,page1,100);
+   $(".navbar-fixed-bottom>ul>li").click(function(ev){
+      ev.preventDefault();
+      $(this).addClass("active").siblings().removeClass("active");
+   })
+   $(".navbar-fixed-top>ul>li").click(function(ev){
+      // ev.preventDefault();
+      $(this).addClass("active").siblings().removeClass("active");
+   })
+   $(".bottom>ul .l1").click(function(){
+    var istrue = $(this).hasClass("active");
+    $("#container").html("");
+    // if (!istrue) {
+      addItem(1,page1,100);
+    // }
+   });
+   $(".bottom>ul .l2").click(function(){
+    console.log("l2");
+    $("#container").html("");
+    var istrue = $(this).hasClass("active");
+    // if (!istrue) {
+      addItem(2,page2,100);
+    // }
+   });
+   $(".bottom>ul .l3").click(function(){
+    console.log("l3");
+    $("#container").html("");
+    var istrue = $(this).hasClass("active");
+    // if (!istrue) {
+      addItem(3,page3,100);
+    // }
+   });
+   $(".bottom>ul .l4").click(function(){
+    console.log("l4");
+    $("#container").html("");
+    var istrue = $(this).hasClass("active");
+    console.log(istrue);
+    // if (!istrue) {
+      addItem(4,page4,100);
+    // }
+   });
+
+   $(".nextPage span").click(function(){
+      for (var i = 0; i < 4; i++) {
+        console.log(i);
+          if($(".bottom>ul>li").eq(i).hasClass("active")){
+              console.log(i);
+              ++page[i];
+              if (page[i]>8) {
+                $(".nextPage span").html("已经是最后一页了");
+                return;
+              }
+              addItem(i+1,page[i],100);
+          }
+        }
+          
+   })
+
+</script>
+
+</html>

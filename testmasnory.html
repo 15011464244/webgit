@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.container-fluid {
+		  padding: 20px;
+		  }
+		.box {
+		  margin-bottom: 20px;
+		  float: left;
+		  width: 320px;
+		  }
+		  .box img {
+		  width: 100%
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="masonry" class="container-fluid">
+
+	</div>
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="js/masonry-docs.js"></script>
+ <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+	var page =2;
+	var pre_page = 100;
+	$.ajax({
+          url:"api/ui.php",
+          data:{page:page,pre_page:pre_page},
+          success:function(data){
+              var data = JSON.parse(data);
+              data = data.showapi_res_body.data;
+              console.log(data);
+              var str = "";
+              var templ = '<div class="box" ><a href="global.html?id={{id}}"><img class="box1" src="{{src}}"></a></div>'
+
+              for(var i = 0; i < data.length; i++) {
+                  templ1= templ.replace("{{src}}", data[i].imgurl);
+                  str+=templ1.replace("{{id}}",data[i].id);
+                }
+             $(str).appendTo($("#masonry"));
+             var int =Math.floor(($(window).width()/$(".box").width()));
+            var cc = $(window).width()-int*$(".box").width();
+            var aa = cc/++int;
+            console.log(aa);
+             $(function() {
+			    var $container = $('#masonry');
+			    $container.imagesLoaded(function() {
+		        $container.masonry({
+		                itemSelector: '.box',
+		                gutter: aa,
+		                isAnimated: false,
+		            });
+		     	});
+			});
+           
+          }
+        });
+
+</script>
+</html>

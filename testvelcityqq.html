@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#p0_btn{
+			position: absolute;
+		    width: 216px;
+		    height: 70px;
+		    top: 50%;
+		    left: 50%;
+		    margin-left: 192px;
+		    margin-top: -235px;
+		    opacity: 0;
+		}
+		#p0_t_1	{
+					position: absolute;
+				    width: 313px;
+				    height: 46px;
+				    top: 50%;
+				    left: 50%;
+				    margin-left: -406.5px;
+				    margin-top: -223px;
+				    background: url(img/title2_1.png) no-repeat;
+				    opacity: 0;
+				}
+		#p0_t_2 {
+		    position: absolute;
+		    width: 880px;
+		    height: 320px;
+		    top: 50%;
+		    left: 50%;
+		    margin-left: -390px;
+		    margin-top: -60px;
+		    text-align: center;
+	   	    perspective: 1000px;
+		}
+		#slogan_1{
+			position: absolute;
+		    width: 880px;
+		    height: 320px;
+		    background: url(img/skin.png);
+		    opacity: 1;
+		}
+		#slogan_2{
+			position: absolute;
+		    width: 880px;
+		    height: 320px;
+		    background: url(img/skin.gif);
+		    opacity: 1;
+		}
+		.bg{
+			position: absolute;
+		    width: 1000px;
+		    height: 1000px;
+		    top: 50%;
+		    left: 50%;
+		    margin-left: -500px;
+		    margin-top: -500px;
+		    transform: scale(0.6);
+   		    opacity: 1;
+		}
+		.bg .orb1{
+			position: absolute;
+		    width: 60px;
+		    height: 60px;
+		    top: 50%;
+		    left: 50%;
+		    margin-left: -30px;
+		    margin-top: -380px;
+		    animation: orbmove 96s linear infinite;
+		}
+		@-webkit-keyframes orbmove {
+		  from {
+		    -webkit-transform: translateX(0px);
+		  }
+		  to {
+		    -webkit-transform: translateX(-2000px);
+  		   }
+		}
+		@keyframes orbmove {
+		  from {
+		    transform: translateX(0px);
+		  }
+		  to {
+		    transform: translateX(-2000px);
+		  }
+		}
+		.bg .orb1 div{
+
+			    width: 100%;
+			    height: 100%;
+			    border-radius: 60px;
+			    background: linear-gradient(to bottom, #ffffff, #dedede);
+				position: absolute;
+				animation: orbloop 6s linear infinite;
+		}
+		@-webkit-keyframes orbloop {
+		  from {
+			    -webkit-transform: rotate(0deg);
+			  }
+			  to {
+			    -webkit-transform: rotate(360deg);
+			  }
+		}
+		@keyframes orbloop {
+		  from {
+		    transform: rotate(0deg);
+		  }
+		  to {
+		    transform: rotate(360deg);
+		  }
+		}
+	</style>
+</head>
+<body>
+<div class="bg">
+	<div class="orb1">
+		<div></div>
+	</div>
+</div>
+
+<div id="p0_btn">
+	<a href="">
+		<img src="img/btn.png">
+	</a>
+</div>
+<div id="p0_t_1">
+	<img src="img/title2_1.png">
+</div>
+<div id="p0_t_2">
+	<div id="slogan_1"></div>
+	<div id="slogan_2"></div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/velocity.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+
+	var pn = 0;
+
+
+	var bg = $('.bg');
+	var p0t1 = $('#p0_t_1');
+	var p0t2 = $('#p0_t_2');
+	var slogan2 = $('#slogan_2');
+	var slogan1 = $('#slogan_1');
+	var p0btn = $('#p0_btn');
+	var pub_t = 1000;
+	var bgspeed = pub_t*4;
+	function p0display(){
+		bg.velocity({rotateZ:'90deg',translateX:'-7000px',scale:3},{duration:0}).velocity({opacity:1,scale:0.6,translateX:'0px',translateY:'0px',rotateZ:'0deg'},{duration:pub_t*3,easing:'ease'});
+
+
+		p0btn.css('display','block');
+		p0btn.velocity({opacity:1},{duration:pub_t,delay:2000});
+
+		p0t1.velocity({opacity:0,translateZ:0,rotateY:0,rotateX:0},{duration:0});
+		p0t1.velocity({opacity:1,rotateY:0,rotateX:0},{duration:pub_t/2,delay:pub_t*1.7});
+
+		slogan1.velocity({rotateY:'-15deg',rotateX:'-30deg',translateZ:'3000px',translateX:'0px',translateY:'0px',scale:.1,opacity:1},{duration:0});
+		slogan1.velocity({rotateZ:'0deg',rotateY:'0deg',rotateX:'0deg',translateZ:'0px',translateX:'0px',translateY:'0px',scale:1},{duration:pub_t*2.3,easing:'ease'});
+
+		slogan2.velocity({rotateY:'-15deg',rotateX:'-30deg',translateZ:'3100px',translateX:'0px',translateY:'0px',scale:.1,opacity:1},{duration:0});
+		slogan2.velocity({rotateY:'0deg',rotateX:'0deg',translateZ:'0px',translateX:'0px',translateY:'0px',scale:1},{duration:pub_t*2.3,easing:'ease',delay:pub_t*0.1});
+
+	}
+	p0display();
+		// using bind
+	$(document).bind('mousewheel', function(event, delta, deltaX, deltaY) {
+	    if (window.console && console.log) {
+	         console.log(delta, deltaX, deltaY);
+	    }
+	    pn = pn - delta;
+	    console.log("curpn"+pn);
+	    if(pn == 0){
+	    	bg.velocity({rotateZ:'90deg',translateX:'-7000px',scale:3},{duration:0}).velocity({opacity:1,scale:0.6,translateX:'0px',translateY:'0px',rotateZ:'0deg'},{duration:pub_t*3,easing:'ease'});
+	    	p0display()
+	    }else if(pn == 1){
+	    	bg.velocity('stop').velocity({scale:1,translateX:'-200px',translateY:'300px',rotateZ:'-60deg'},{duration:pub_t*2.5,easing:'ease-in-out'});
+	    	slogan1.velocity({opacity:0},{duration:pub_t*1});
+			slogan2.velocity({opacity:0},{duration:pub_t*1});
+			p0btn.velocity({opacity:0},{duration:pub_t/2});
+			setTimeout(function(){
+				p0btn.css('display','none');
+			},600)
+			p0t1.velocity({rotateX:'0deg',translateZ:'0px',opacity:0},{duration:pub_t/2});
+		 }
+	});
+	// using the event helper
+	$(document).mousewheel(function(event, delta, deltaX, deltaY) {
+	    if (window.console && console.log) {
+	         console.log(delta, deltaX, deltaY);
+	    }
+	});
+</script>
+</html>

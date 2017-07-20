@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        li{list-style: none;border: 1px solid black;margin: 20px 10px;width: 80%;padding: 10px;}
+    </style>
+</head>
+<body>
+    <ul id="container">
+        <li><video src="http://ic.snssdk.com/neihan/video/playback/?video_id=ba70935cfd594455b5aa25e2094dbe1f&quality=origin&line=0&is_gif=0&device_platform=.WebM">fgsgasfadsfs</video></li>
+    </ul>
+    <div id="imloading" style="width:150px;height:30px;line-height:30px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000;margin:10px auto 30px;color:#fff;display:block;">
+
+      I'm Loading.....
+
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+function aa(){
+
+     $.ajax({
+          url:"api/news.php",
+           data:{},
+          success:function(data){
+                flag = true;
+              var data = JSON.parse(data);
+              // data = data.showapi_res_body.data;
+              console.log(data.data.data);
+                var html="";
+                console.log(data.data.data.length);
+                for(var i =0;i<data.data.data.length;i++){
+                console.log(data.data.data[i].group.mp4_url);
+               html+= "<li class='video'><video src="+data.data.data[i].group.mp4_url+"></video></li>"
+                    // html+="<li class='item'>"+data.data.data[i].group.content+"</li>";
+                }
+                // console.log(html);
+                // $(html).appendTo($("#container"))
+                $("#container").append($(html));
+          }
+      });
+}
+aa();
+var flag = true;
+console.log($(document).height());
+    console.log($(window).height());
+if ($(document).height()==$(window).height()) {
+
+    aa();
+}
+ $(window).scroll(function(event) {
+    if (!flag) {
+                  return
+              }
+    if ($(window).scrollTop() >= ($(document).height() - $(window).height() -100)) {
+
+        aa();
+        flag = false;
+    }
+});
+
+</script>
+</html>

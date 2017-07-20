@@ -1,0 +1,210 @@
+#main p {
+    color: #00ff00;
+    width: 97%;
+    .redbox {
+        background-color: #ff0000;
+        color: #000000;
+        width: 10px;
+        height: 100px;
+    }
+}
+$width: 5em;
+#main {
+    width: $width;
+    height: 100px;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+    body.firefox & {
+        font-weight: normal;
+    }
+}
+.funky {
+    font: {
+        family: fantasy;
+        size: 30em;
+        weight: bold;
+    }
+}
+
+.nav {
+    border: 1px solid #000 {
+        left: 0;
+        right: 0;
+    }
+}
+
+#main {
+    $width: 5em !global;
+    ;
+    $height: 4px !global;
+    width: $width;
+}
+
+#sidebar {
+    width: $width;
+}
+
+$map: (hero: libai, key2: anqila, key3: lanlingwang);
+.box {
+    content: map-get($map, key3);
+    content: map-get(("foo": 1, "bar": 2), "bar");
+    content: map-has-key(("foo": 1, "bar": 2), "foo");
+    content: map-has-key(("foo": 1, "bar": 2), "bzs");
+    content: map-keys(("foo": 1, "bar": 2));
+    content: map-values(("foo": 1, "bar": 2));
+}
+
+.box {
+    content: percentage(0.2);
+}
+@mixin firefox-message($selector) {
+    body.firefox #{$selector}:before {
+        content: "Hi, Firefox users!";
+    }
+}
+@include firefox-message(".header");
+
+p {
+    cursor: e + -resize;
+}
+
+p:before {
+    content: "Foo " + Bar;
+    font-family: sans- + "serif";
+}
+p:before {
+    content: "I ate #{5 + 10} pies!";
+}
+$value: null;
+p:before {
+    content: "I ate #{$value} pies!";
+}
+
+.p1 {
+    $font-size: 12px;
+    $line-height: 30px;
+    font: $font-size/$line-height;
+}
+
+.p2 {
+    $font-size: 12px;
+    $line-height: 30px;
+    font: #{$font-size}/#{$line-height};
+}
+
+
+$content: "First content";
+$content: "Second content?" !default;
+$new_content: "First time reference" !default;
+#main {
+    content: $content;
+    content: $new_content;
+}
+.sidebar {
+    width: 300px;
+    @media screen and (orientation: landscape) {
+        width: 500px;
+    }
+}
+.error {
+    border: 1px #f00;
+    background-color: #fdd;
+}
+.seriousError {
+    @extend .error;
+    border-width: 3px;
+}
+@mixin stark {
+    color: #00ff00;
+    background-color: #fcf;
+}
+.box {
+    @include stark;
+}
+// @debug 10em + 12em;
+// @mixin adjust-location($x, $y) {
+//   @if unitless($x) {
+//     @warn "Assuming #{$x} to be in pixels";
+//     $x: 1px * $x;
+//   }
+//   @if unitless($y) {
+//     @warn "Assuming #{$y} to be in pixels";
+//     $y: 1px * $y;
+//   }
+//   position: relative; left: $x; top: $y;
+// }
+// @include adjust-location(10px, 20px);
+
+@mixin stark($text-color, $background) {
+    color: $text-color;
+    background-color: $background;
+    a {
+        color: darken($text-color, 10%);
+    }
+}
+
+.warning {
+    @include stark(red, blue);
+}
+.warning-info {
+    @include stark($background: yellow, $text-color: green);
+}
+
+$type: monster;
+p {
+    @if $type==ocean {
+        color: blue;
+    }
+    @else if $type==matador {
+        color: red;
+    }
+    @else if $type==monster {
+        color: green;
+    }
+    @else {
+        color: black;
+    }
+}
+
+@for $i from 1 through 3 {
+    .item-#{$i} {
+        width: 2em * $i;
+    }
+}
+
+
+$colors:(light:#ffffff,
+dark:#000000);
+@function color($key) {
+    @if not map-has-key($colors,
+    $key) {
+        @warn "dfasdfasfsdkey";
+    }
+    @return map-get($colors,
+    $key);
+}
+
+body {
+    background-color: color(light);
+}
+
+.box {
+    background-color: color(dark);
+}
+
+@media print {
+    .error1 {
+        border: 1px #f00;
+        background-color: #fdd;
+    }
+    .seriousError {
+        @extend .error1;
+        border-width: 3px;
+    }
+}

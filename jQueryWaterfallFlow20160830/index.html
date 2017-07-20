@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh">
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pursuit for Beauty</title>
+      <link href="css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<style>
+  *{margin: 0px;}
+  .middle{margin: 0 auto; }
+  .middle>ul>li{margin:0 1rem;}
+  .middle>ul>li>a{font-size: 1rem}
+  .outer{margin-top: 50px;}
+  li.fixed{position: fixed;right: 10px;top: 5px}
+  div{margin: 10 auto;}
+  img{height: auto;width: 100%}
+  .pic-bottom{width: 100%;height: 2rem;margin:  0 auto}
+  .pic-bottom span{ line-height: 2rem; margin: 0 10%;}
+  .pic-bottom i{line-height: 2rem;margin: 0 2%;}
+  .pic-bottom b{display: none;}
+  @media (min-width: 320px) {
+    html {
+        font-size: 50%!important;
+    }
+    .middle>ul>li{margin:0 1%;}
+    .bottom>ul>li{margin:0 1%;}
+  }
+  }
+  @media (min-width: 400px) {
+    html {
+        font-size: 50%!important;
+    }
+  }
+  @media (min-width: 828px) {
+    html {
+        font-size: 100%!important;
+    }
+    .middle>ul>li{margin:0 7%;}
+    .bottom>ul>li{margin:0 7%;}
+  }
+  @media (min-width: 1000px) {
+    html {
+        font-size: 100%!important;
+    }
+    .middle>ul>li{margin:0 13%;}
+    .bottom>ul>li{margin:0 10%;}
+  }
+.jq22-container { margin-top: 50px; margin: 0 auto; }
+#div1 { margin: auto; position: relative; }
+.box { float: left; padding: 10px; border: 1px solid #ccc;}
+.box img { width: 120px; }
+@media (min-width: 1000px) {
+    html {
+        font-size: 100%!important;
+    }
+    .box img { width: 600px; }
+
+  }
+</style>
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+	</head>
+	<body>
+   <nav class="navbar navbar-default navbar-fixed-top  container-fluid middle">
+    <ul class="nav nav-tabs ">
+      <li role="presentation" class="active "><a href="#">picture</a></li>
+      <li role="presentation" ><a href="#">episode</a></li>
+      <li role="presentation" ><a href="#">news</a></li>
+      <li role="presentation" class="dropdown fixed">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+          ... <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+           <li role="presentation" ><a href="weather.html">天气</a></li>
+        </ul>
+     </li>
+    </ul>
+  </nav>
+  <div id="div1">
+      
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-bottom  container-fluid middle bottom">
+    <ul class="nav nav-tabs ">
+      <li role="presentation" class="active l1"><a href="">清纯</a></li>
+      <li role="presentation" class="l2"><a href="">性感</a></li>
+      <li role="presentation" class="l3"><a href="">气质</a></li>
+      <li role="presentation" class="l4"><a href="">唯美</a></li>
+    </ul>
+  </nav>
+
+<script src="http://www.jq22.com/jquery/1.7.2/jquery.min.js"></script> 
+<script src="js/jquery.waterfall.js"></script> 
+<script>
+          var type =1;
+          page=1;
+          pre_page=10;
+         $.ajax({
+          url:"../api/ui.php",
+           data:{type:1,page:1,pre_page:10},
+               success:function(data){
+             var data = JSON.parse(data);
+             data = data.showapi_res_body.data;
+             console.log(data);
+             var str = "";
+              var templ = '<div class="box" style="opacity:1;filter:alpha(opacity=0);"><div class="pic"><img src="{{src}}" /></div></div>'
+
+              for(var i = 0; i < data.length; i++) {
+                  str += templ.replace("{{src}}", data[i].imgurl);
+              }
+              $(str).appendTo($("#div1"));
+              console.log("this");
+         }
+
+           });
+      
+    	    $("#div1").waterfall({
+    	          itemClass: ".box",
+         	    minColCount: 2,
+         	    spacingHeight: 10,
+         	    resizeable: true,
+         	    ajaxCallback: function(success, end) {
+                 $.ajax({
+                       url:"../api/ui.php",
+                       data:{type:type,page:page,pre_page:pre_page},
+                       success:function(data){
+                       var data = JSON.parse(data);
+                       data = data.showapi_res_body.data;
+                       console.log(data);
+                       var str = "";
+                        var templ = '<div class="box" style="opacity:0;filter:alpha(opacity=0);"><div class="pic"><img src="{{src}}" /></div></div>'
+                        var num = 0 ;
+                        var imgs =[];
+                        for(var i = 0; i < data.length; i++) {
+                            var img = new Image();
+                            imgs.push(img);
+                            console.log(imgs);
+                            imgs[i].index =i;
+                            imgs[i].onload=function(){
+                            ++num;
+                            str += templ.replace("{{src}}", data[this.index].imgurl);
+                            console.log(str);
+                            if (num == data.length) {
+                             $(str).appendTo($("#div1"));
+                            ++page;
+                            success();
+                            end();
+                            }
+                            }
+                            img.src=data[i].imgurl;                 
+                        }     
+                   }
+               });   
+    	    }
+    	});
+	</script>
+</body>
+</html>

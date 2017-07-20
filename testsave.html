@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{background: url(img/1.jpg) no-repeat center; width: 1000px;height: 1000px;}
+	</style>
+</head>
+<body>
+	<div >	
+		<canvas id="canvas" width="1000px" height="1000px"></canvas>
+	</div>
+</body>
+<script type="text/javascript">
+draw();
+	function draw() {
+  var canvas = document.getElementById('canvas')
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle="yellow";
+  ctx.fillRect(0,0,1550,1550);   // 使用默认设置绘制一个矩形
+  ctx.fillStyle="yellow";
+  ctx.fillText("dfsdfasfdasf",100,150);
+  ctx.globalCompositeOperation = "destination-out";
+  var a =1;
+  canvas.onmousedown = function(){
+  	a=1;
+  	canvas.onmousemove=function(ev){
+  		// console.log(ev.pageX,ev.pageY);
+  		if (a) {
+  		// ctx.beginPath();
+  		ctx.fillRect(ev.pageX-5,ev.pageY-5,10,10);
+  		// ctx.closePath()
+  		// ctx.fill();
+  		}
+  	}
+  }
+  canvas.onmouseup =function(){
+
+  	a = 0;
+  	// canvas.onmousemove =null;
+  	// ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+}
+</script>
+</html>
